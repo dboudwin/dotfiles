@@ -20,22 +20,22 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 	alias ls="ls -G"
 	alias ll="ls -lha"
-	alias stfu="osascript -e 'set volume output muted true'"
+	alias stfu="osascript -e 'set volume output muted true'" # mute volume
 	alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 
 fi
 
-##################
-#Common functions#
-##################
+########
+#Common#
+########
 alias ..="cd .."
 alias e="exit"
 alias g="cd ~/git"
 alias grep="grep --color=auto"
-alias webby="python -m SimpleHTTPServer 8000" # starts a web server in current dir, handy for sending files quickly
-alias s="ssh"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias myip="curl http://icanhazip.com"
+alias s="ssh"
+alias webby="python -m SimpleHTTPServer 8000" # starts a web server in current dir, handy for sending files quickly
 
 
