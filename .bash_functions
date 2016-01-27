@@ -16,13 +16,18 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 #OSX-specific funcitons#
 ########################
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	alias upgrade_brew="brew update && brew install `brew outdated`"
+	alias upgrade_brew="brew update && brew upgrade"
 	alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 	alias ls="ls -G"
 	alias ll="ls -lha"
 	alias stfu="osascript -e 'set volume output muted true'" # mute volume
 	alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 	alias nslookup="rlwrap nslookup"
+	alias updatedb="LC_ALL='C' sudo updatedb"
+	if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    	. $(brew --prefix)/etc/bash_completion
+	eval "$(/usr/local/bin/docker-machine env prl-dev)"
+  	fi
 
 fi
 
@@ -38,6 +43,5 @@ alias l="ls"
 alias myip="curl http://icanhazip.com"
 alias s="ssh"
 alias webby="python -m SimpleHTTPServer 8000" # starts a web server in current dir, handy for sending files quickly
-alias pip-upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
+alias pip2-upgrade="pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 alias pip3-upgrade="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
-
