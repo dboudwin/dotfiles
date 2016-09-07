@@ -26,7 +26,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	alias updatedb="LC_ALL='C' sudo updatedb"
 	if [ -f $(brew --prefix)/etc/bash_completion ]; then
     	. $(brew --prefix)/etc/bash_completion
-	eval "$(/usr/local/bin/docker-machine env prl-dev)"
   	fi
 
 fi
@@ -45,3 +44,4 @@ alias s="ssh"
 alias webby="python -m SimpleHTTPServer 8000" # starts a web server in current dir, handy for sending files quickly
 alias pip2-upgrade="pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 alias pip3-upgrade="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
+alias bucket="aws s3api list-objects --bucket $1 --output json --query \"[length(Contents[])]\""
