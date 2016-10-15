@@ -22,11 +22,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	alias ll="ls -lha"
 	alias stfu="osascript -e 'set volume output muted true'" # mute volume
 	alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+	alias ports='lsof -n -iTCP | grep LISTEN'
 	alias nslookup="rlwrap nslookup"
 	alias updatedb="LC_ALL='C' sudo updatedb"
-	if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    	. $(brew --prefix)/etc/bash_completion
-  	fi
 
 fi
 
@@ -35,11 +33,12 @@ fi
 ########
 alias ..="cd .."
 alias e="exit"
+alias digg="dig +nocmd $1 any +multiline +noall +answer"
 alias g="cd ~/git"
 alias grep="grep --color=auto"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias l="ls"
-alias myip="curl http://icanhazip.com"
+alias myip="curl -4 http://icanhazip.com; curl -6 http://icanhazip.com"
 alias s="ssh"
 alias webby="python -m SimpleHTTPServer 8000" # starts a web server in current dir, handy for sending files quickly
 alias pip2-upgrade="pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
