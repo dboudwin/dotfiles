@@ -1,9 +1,14 @@
-source .bash_functions
-source .brew_github_token
+source ~/.bash_functions
+source ~/.brew_github_token
 HISTSIZE=1000000 
 HISTFILESIZE=1000000000000
-export PATH="/usr/local/sbin:/Users/derrick/.local/bin:$PATH"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+source ~/.profile
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+    . /usr/local/share/bash-completion/bash_completion
 fi
+
+export PATH="/usr/local/sbin:~/.nimble/bin:$PATH"

@@ -25,7 +25,13 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	alias ports='lsof -n -iTCP | grep LISTEN'
 	alias nslookup="rlwrap nslookup"
 	alias updatedb="LC_ALL='C' sudo updatedb"
+	alias study="DATE=`date +%Y-%m-%d` && cd ~/Google\ Drive/Documents/derrick/scripture_study/ && subl ./ ./daily/$DATE"
+	alias purge_caches="sudo rm -rf /Library/Caches/*/*; sudo rm -rf ~/Library/Caches/*/*"
+fi
 
+# If gnutools are installed
+if [ -e /usr/local/bin/gdf ]; then
+	alias df="/usr/local/bin/gdf"
 fi
 
 ########
@@ -40,7 +46,15 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias l="ls"
 alias myip="curl -4 http://icanhazip.com; curl -6 http://icanhazip.com"
 alias s="ssh"
+alias fixnames="rename 'tr/ A-Z/-a-z/' -- *"
 alias webby="python -m SimpleHTTPServer 8000" # starts a web server in current dir, handy for sending files quickly
 alias pip2-upgrade="pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 alias pip3-upgrade="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
 alias bucket="aws s3api list-objects --bucket $1 --output json --query \"[length(Contents[])]\""
+alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+export DOKKU_HOST="wuxol.com"
+alias sfix='ssh-keygen -R'
+alias t='task'
+alias tw='timew'
+alias nvm-copy='n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local'
+
